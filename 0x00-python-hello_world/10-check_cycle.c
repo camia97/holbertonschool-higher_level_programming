@@ -10,10 +10,10 @@ int check_cycle(listint_t *list)
 
 	if (!list)
 		return (0);
-	while (a->next != NULL && b->next->next != NULL)
+	while (a->next != NULL && a->next->next != NULL)
 	{
-		a = a->next;
-		b = b->next->next;
+		b = b->next;
+		a = a->next->next;
 		if (a == b)
 			return (1);
 	}
