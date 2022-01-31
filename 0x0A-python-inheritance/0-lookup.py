@@ -3,6 +3,5 @@
 
 
 def lookup(obj):
-    """function create a list"""
-    my_list = []
-    return dir(my_list)
+    """function dir object"""
+    return dir(obj)
