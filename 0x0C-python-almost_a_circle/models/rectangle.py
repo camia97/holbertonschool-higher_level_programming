@@ -88,10 +88,24 @@ class Rectangle(Base):
         return f"[Rectangle] ({self.id}) \
 {self.__x}/{self.__y} - {self.__width}/{self.__height}"
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Public method update"""
         arg = {0:"id", 1:"width", 2:"height", 3:"x", 4:"y"}
-        if len(args) < 5:
-            for i in range(len(args)):
-                setattr(self, arg[i], args[i])
-            
+        if args:
+            if len(args) < 5:
+                for i in range(len(args)):
+                    setattr(self, arg[i], args[i])
+        else:
+            for key in kwargs:
+                setattr(self, key, kwargs[key])
+
+    def to_dictionary(self):
+        """return dictionary"""
+        my_dict = {
+            'x': self.x,
+            'y': self.y,
+            'id': self.id,
+            'width': self.width,
+            'height': self.height
+        }
+        return my_dict
