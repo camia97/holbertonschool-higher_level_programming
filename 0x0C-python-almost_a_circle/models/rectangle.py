@@ -83,6 +83,7 @@ class Rectangle(Base):
             print(str_x, end="")
             str_width = "#" * self.width
             print(str_width)
+
     def __str__(self):
         """str method"""
         return f"[Rectangle] ({self.id}) \
@@ -90,12 +91,12 @@ class Rectangle(Base):
 
     def update(self, *args, **kwargs):
         """Public method update"""
-        arg = {0:"id", 1:"width", 2:"height", 3:"x", 4:"y"}
+        arg = {0: "id", 1: "width", 2: "height", 3: "x", 4: "y"}
         if args:
-            if len(args) < 5:
+            if len(args) < 6:
                 for i in range(len(args)):
                     setattr(self, arg[i], args[i])
-        else:
+        elif kwargs:
             for key in kwargs:
                 setattr(self, key, kwargs[key])
 

@@ -18,7 +18,7 @@ class Base:
     @staticmethod
     def to_json_string(list_dictionaries):
         """dictionary to json"""
-        if list_dictionaries == None:
+        if list_dictionaries is None:
             return "[]"
         else:
             return json.dumps(list_dictionaries)
@@ -39,6 +39,35 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         """static method"""
+        if type(json_string) is not str:
+            raise TypeError("jason_string must be an str")
         if json_string is None:
-            return "[]"
-        return json.dumps(json_string)
+            return ([])
+        return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """create a new object"""
+        if cls.__name__ == "Rectangle":
+            c = cls(1, 2)
+        elif cls.__name__ == "Square":
+            c = cls(4)
+        if c:
+            c.update(**dictionary)
+            return c
+
+    @classmethod
+    def load_from_file(cls):
+        """returns a list of instances"""
+        list_n = []
+        name_file = f"{cls.__name__}.json"
+        with open(name_file, 'r') as f:
+            for line in f:
+                try:
+                    l_line = cls.from_json_string(line)
+                    for i in l_line:
+                        ins = cls.create(**i)
+                        list_n.append(ins)
+                except Exception as a:
+                    print(f"Error")
+        return list_n
