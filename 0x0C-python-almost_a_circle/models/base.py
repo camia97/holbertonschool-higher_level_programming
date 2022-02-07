@@ -39,10 +39,10 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         """static method"""
+        if json_string is None:
+            return ([])
         if type(json_string) is not str:
             raise TypeError("jason_string must be an str")
-        if json_string is None:
-            return ("[]")
         return json.loads(json_string)
 
     @classmethod
