@@ -5,7 +5,6 @@ from models.base import Base
 
 class Rectangle(Base):
     """Class Rectangle"""
-
     @property
     def width(self):
         """Property width"""
