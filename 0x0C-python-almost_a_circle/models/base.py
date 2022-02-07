@@ -42,7 +42,7 @@ class Base:
         if type(json_string) is not str:
             raise TypeError("jason_string must be an str")
         if json_string is None:
-            return ([])
+            return ("[]")
         return json.loads(json_string)
 
     @classmethod
