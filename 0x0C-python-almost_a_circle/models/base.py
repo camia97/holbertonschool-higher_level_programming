@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """modulo base"""
 import json
-
+from os import path
 
 class Base:
     """Class Base"""
@@ -61,13 +61,14 @@ class Base:
         """returns a list of instances"""
         list_n = []
         name_file = f"{cls.__name__}.json"
-        with open(name_file, 'r') as f:
-            for line in f:
-                try:
-                    l_line = cls.from_json_string(line)
-                    for i in l_line:
-                        ins = cls.create(**i)
-                        list_n.append(ins)
-                except Exception as a:
-                    print(f"Error")
+        if path.isfile(f"{cls.__name__}.json"):
+            with open(name_file, 'r') as f:
+                for line in f:
+                    try:
+                        l_line = cls.from_json_string(line)
+                        for i in l_line:
+                            ins = cls.create(**i)
+                            list_n.append(ins)
+                    except Exception as a:
+                        print(f"Error")
         return list_n
