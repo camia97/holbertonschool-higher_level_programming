@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """modulo base"""
 import json
+import csv
 from os import path
 
 
@@ -73,3 +74,19 @@ class Base:
                     except Exception as a:
                         print(f"Error")
         return list_n
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """save to file"""
+        list_c = []
+        name_file = f"{cls.__name__}.csv"
+        with open(name_file, 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(list_objs)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """load fome file"""
+        name_file = f"{cls.__name__}.csv"
+        with open(name_file, 'r') as fil:
+            return csv.reader(fil)
