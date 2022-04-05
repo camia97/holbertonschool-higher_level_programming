@@ -13,7 +13,7 @@ class Square extends Rectangle {
     } else {
       let line = '';
       for (let i = 0; i < this.width; i++) {
-        line += 'c';
+        line += c;
       }
       for (let j = 0; j < this.height; j++) {
         console.log(line);
