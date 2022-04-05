@@ -12,10 +12,10 @@ class Square extends Rectangle {
       this.print();
     } else {
       let line = '';
-      for (let i = 0; i < this.height; i++) {
+      for (let i = 0; i < this.width; i++) {
         line += 'C';
       }
-      for (let j = 0; j < this.width; j++) {
+      for (let j = 0; j < this.height; j++) {
         console.log(line);
       }
     }
