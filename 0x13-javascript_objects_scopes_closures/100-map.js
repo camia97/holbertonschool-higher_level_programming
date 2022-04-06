@@ -1,3 +1,3 @@
 #!/usr/bin/node
-import { list } from './100-data.js';
-console.log(list.map((item, idx) => list * idx));
+const arr = require('./100-data').list;
+console.log(arr.map((item, idx) => item * idx));
