@@ -14,11 +14,11 @@ if __name__ == "__main__":
     )
     cur = db.cursor()
     cur.execute("SELECT cities.name\
-            FROM cities\
-            JOIN states\
+            FROM `cities`\
+            JOIN `states`\
             ON cities.state_id = states.id\
             WHERE states.name = BINARY (%s)\
-            ORDER BY states.id", [sys.argv[4], ])
+            ORDER BY states.id", (sys.argv[4], ))
     rows = cur.fetchall()
     for i in range(len(rows)):
         if i < len(rows) - 1:
