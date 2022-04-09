@@ -20,8 +20,11 @@ if __name__ == "__main__":
             WHERE states.name = BINARY (%s)\
             ORDER BY cities.id", (sys.argv[4], ))
     rows = cur.fetchall()
-    for i in range(len(rows)):
-        if i < len(rows) - 1:
-            print(rows[i][0], end=", ")
-        else:
-            print(rows[i][0])
+    if len(rows) > 0:
+        for i in range(len(rows)):
+            if i < len(rows) - 1:
+                print(rows[i][0], end=", ")
+            else:
+                print(rows[i][0])
+    else:
+        print()
