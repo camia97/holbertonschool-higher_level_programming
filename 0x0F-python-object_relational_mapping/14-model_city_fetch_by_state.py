@@ -14,8 +14,7 @@ if __name__ == "__main__":
 {argv[1]}:{argv[2]}@localhost/{argv[3]}')
     Session = sessionmaker(bind=engine)
     session = Session()
-    state = session.query(State)
-    for j in session.query(State):
-        for i in session.query(City).order_by(City.id):
-            print(f'{j.name}: ({i.id}) {i.name}')
+    state = session.query(State, City).filter(State.id == City.state_id)
+    for s, c in state:
+        print(f'{s.name}: ({c.id}) {c.name}')
     session.close()
