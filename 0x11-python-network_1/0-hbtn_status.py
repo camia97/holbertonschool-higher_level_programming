@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Python networking 1"""
-import sys
 import urllib.request
 
 
