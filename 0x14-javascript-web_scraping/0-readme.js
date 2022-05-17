@@ -1,8 +1,10 @@
 #!/usr/bin/node
 
 let fs = require('fs');
-fs.readFile(arguments[1], bar)
-function bar(err, data)
-{
-    err ? Function("error","throw error")(err) : console.log(JSON.stringify(data) );
+fs.readFile(process.argv[2], 'utf-8', function (err, data) {
+    if (err) {
+        return console.log(err);
+    }
+    console.log(data);
 }
+);
